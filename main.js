@@ -49,6 +49,35 @@ function showTasks() {
   }
 }
 
+function markCompleted(id) {
+  for (const task of tasks) {
+    if (task.id === id) {
+      task.completed = true;
+      return task;
+    }
+  }
+
+  console.log(`Error: task with id ${id} not found.`);
+  return null;
+}
+
+function removeTask(id) {
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id === id) {
+      tasks.splice(i, 1);
+      console.log(`Task ${id} removed.`);
+      return true;
+    }
+  }
+
+  console.log(`Error: task with id ${id} not found.`);
+  return false;
+}
+
 addTask('Learn Arrays');
 addTask('   ');
+markCompleted(3);
+removeTask(5);
+markCompleted(999);
+removeTask(999);
 showTasks();
